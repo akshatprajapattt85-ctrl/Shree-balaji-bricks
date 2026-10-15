@@ -2,10 +2,12 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
 interface NavbarProps {
+  currentPath: string;
+  onNavigate: (path: string) => void;
   onQuoteClick: () => void;
 }
 
-export function Navbar({ onQuoteClick }: NavbarProps) {
+export function Navbar({ currentPath, onNavigate, onQuoteClick }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -18,25 +20,21 @@ export function Navbar({ onQuoteClick }: NavbarProps) {
   }, []);
 
   const navLinks = [
-    { label: 'Home', href: '#home' },
-    { label: 'Products', href: '#products' },
-    { label: 'About', href: '#about' },
-    { label: 'Gallery', href: '#gallery' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Home', path: '/' },
+    { label: 'Products', path: '/types-of-bricks' },
+    { label: 'Buying Guide', path: '/how-to-choose-quality-bricks' },
+    { label: 'Price Guide', path: '/brick-price-guide' },
   ];
 
-  const handleLinkClick = (href: string) => {
+  const handleLinkClick = (path: string) => {
     setMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    onNavigate(path);
   };
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+        isScrolled || currentPath !== '/'
           ? 'bg-[#111113]/95 backdrop-blur-md border-b border-neutral-800/80 py-3.5 shadow-2xl'
           : 'bg-gradient-to-b from-black/80 via-black/40 to-transparent py-5'
       }`}
@@ -44,10 +42,10 @@ export function Navbar({ onQuoteClick }: NavbarProps) {
       <div className="max-w-7xl mx-auto px-6 sm:px-8 flex items-center justify-between gap-8">
         {/* Zone 1: Brand Wordmark with Brick-Inspired Geometric Symbol */}
         <a
-          href="#home"
+          href="/"
           onClick={(e) => {
             e.preventDefault();
-            handleLinkClick('#home');
+            handleLinkClick('/');
           }}
           className="flex items-center gap-3 group whitespace-nowrap shrink-0"
         >
@@ -68,25 +66,32 @@ export function Navbar({ onQuoteClick }: NavbarProps) {
             </div>
           </div>
           <span className="text-base sm:text-lg font-bold tracking-wider text-white uppercase font-display">
-            PAWANSHAKTI ENTERPRISES
+            SHREE BALAJI BRICKS
           </span>
         </a>
 
         {/* Zone 2: Clean 4–5 single-line navigation links */}
-        <nav className="hidden md:flex items-center gap-8 text-xs lg:text-sm font-medium tracking-wide text-neutral-300">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={(e) => {
-                e.preventDefault();
-                handleLinkClick(link.href);
-              }}
-              className="hover:text-white transition-colors duration-150 whitespace-nowrap shrink-0 relative py-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#B84226] hover:after:w-full after:transition-all after:duration-200"
-            >
-              {link.label}
-            </a>
-          ))}
+        <nav className="hidden md:flex items-center gap-7 text-xs lg:text-sm font-medium tracking-wide text-neutral-300">
+          {navLinks.map((link) => {
+            const isActive = currentPath === link.path;
+            return (
+              <a
+                key={link.label}
+                href={link.path}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleLinkClick(link.path);
+                }}
+                className={`transition-colors duration-150 whitespace-nowrap shrink-0 relative py-1 ${
+                  isActive ? 'text-white font-semibold' : 'hover:text-white text-neutral-300'
+                } after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-[#B84226] ${
+                  isActive ? 'after:w-full' : 'after:w-0 hover:after:w-full'
+                } after:transition-all after:duration-200`}
+              >
+                {link.label}
+              </a>
+            );
+          })}
         </nav>
 
         {/* Zone 3: Primary Action & Mobile Hamburger */}
@@ -118,12 +123,14 @@ export function Navbar({ onQuoteClick }: NavbarProps) {
             {navLinks.map((link) => (
               <a
                 key={link.label}
-                href={link.href}
+                href={link.path}
                 onClick={(e) => {
                   e.preventDefault();
-                  handleLinkClick(link.href);
+                  handleLinkClick(link.path);
                 }}
-                className="text-sm font-medium text-neutral-200 hover:text-[#B84226] transition-colors py-2 border-b border-neutral-800/50"
+                className={`text-sm font-medium transition-colors py-2 border-b border-neutral-800/50 ${
+                  currentPath === link.path ? 'text-[#DE5B3E]' : 'text-neutral-200 hover:text-[#B84226]'
+                }`}
               >
                 {link.label}
               </a>

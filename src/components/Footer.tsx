@@ -1,17 +1,20 @@
-import { Phone, Mail, MapPin, Clock, MessageSquare, ArrowUp } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, MessageSquare, ArrowUp, ArrowRight } from 'lucide-react';
 import { BUSINESS_INFO } from '../data/content';
 
-export function Footer() {
+interface FooterProps {
+  onNavigate: (path: string) => void;
+}
+
+export function Footer({ onNavigate }: FooterProps) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const navLinks = [
-    { label: 'Home', href: '#home' },
-    { label: 'Products', href: '#products' },
-    { label: 'About', href: '#about' },
-    { label: 'Gallery', href: '#gallery' },
-    { label: 'Get a Quote', href: '#quote' },
+    { label: 'Home', path: '/' },
+    { label: 'Types of Bricks', path: '/types-of-bricks' },
+    { label: 'Brick Buying Guide', path: '/how-to-choose-quality-bricks' },
+    { label: 'Brick Price Guide', path: '/brick-price-guide' },
   ];
 
   return (
@@ -37,7 +40,7 @@ export function Footer() {
                 </div>
               </div>
               <span className="text-lg font-bold tracking-wider text-white uppercase font-display">
-                PAWANSHAKTI ENTERPRISES
+                SHREE BALAJI BRICKS
               </span>
             </div>
 
@@ -47,7 +50,7 @@ export function Footer() {
 
             <div className="pt-2">
               <a
-                href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=Hello%20Pawanshakti%20Enterprises,%20I%20would%20like%20to%20inquire%20about%20brick%20pricing%20and%20orders.`}
+                href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=Hello%20Shree%20Balaji%20Bricks,%20I%20would%20like%20to%20inquire%20about%20brick%20pricing%20and%20orders.`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 hover:border-emerald-700/60 text-neutral-300 hover:text-white rounded-sm transition-colors"
@@ -58,22 +61,40 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Quick Navigation (3 cols) */}
+          {/* Quick Navigation & Guides (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
             <span className="text-xs font-semibold uppercase tracking-wider text-white font-display block">
-              Quick Navigation
+              Pages & Guides
             </span>
             <ul className="space-y-2.5">
               {navLinks.map((link) => (
                 <li key={link.label}>
                   <a
-                    href={link.href}
-                    className="hover:text-white transition-colors"
+                    href={link.path}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onNavigate(link.path);
+                    }}
+                    className="hover:text-white transition-colors flex items-center gap-1.5"
                   >
-                    {link.label}
+                    <ArrowRight className="w-3 h-3 text-[#DE5B3E]" />
+                    <span>{link.label}</span>
                   </a>
                 </li>
               ))}
+              <li>
+                <a
+                  href="/#quote"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/#quote');
+                  }}
+                  className="hover:text-white transition-colors flex items-center gap-1.5"
+                >
+                  <ArrowRight className="w-3 h-3 text-[#DE5B3E]" />
+                  <span>Request a Quote</span>
+                </a>
+              </li>
             </ul>
           </div>
 

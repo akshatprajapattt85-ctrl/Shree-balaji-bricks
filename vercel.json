@@ -1,0 +1,36 @@
+{
+  "cleanUrls": true,
+  "routes": [
+    {
+      "src": "/google45f4ff32df33ba1a.html",
+      "dest": "/google45f4ff32df33ba1a.html"
+    },
+    {
+      "src": "/robots.txt",
+      "dest": "/robots.txt"
+    },
+    {
+      "src": "/sitemap.xml",
+      "dest": "/sitemap.xml"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/types-of-bricks",
+      "dest": "/types-of-bricks/index.html"
+    },
+    {
+      "src": "/how-to-choose-quality-bricks",
+      "dest": "/how-to-choose-quality-bricks/index.html"
+    },
+    {
+      "src": "/brick-price-guide",
+      "dest": "/brick-price-guide/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}

@@ -16,7 +16,7 @@ export function Hero({ onExploreClick, onQuoteClick }: HeroProps) {
       <div className="absolute inset-0 z-0">
         <img
           src={ASSETS.hero}
-          alt="Shree Balaji Bricks - Precision stacked red clay bricks in warm natural sunlight"
+          alt="Shree Balaji Bricks yard with stacks of quality bricks for construction in natural sunlight"
           referrerPolicy="no-referrer"
           className="w-full h-full object-cover object-center scale-[1.02] transform transition-transform duration-1000 ease-out"
         />
@@ -27,15 +27,18 @@ export function Hero({ onExploreClick, onQuoteClick }: HeroProps) {
 
       {/* Content Container */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 text-center pt-24 pb-20">
-        {/* Exact Required Headline */}
+        <span className="text-xs uppercase tracking-[0.25em] text-[#DE5B3E] font-semibold block mb-3">
+          Trusted Brick Suppliers
+        </span>
+        {/* H1 with Main and Related Keywords */}
         <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white uppercase font-display leading-[1.08] mb-6 drop-shadow-md">
-          BUILT ON QUALITY.<br />
-          <span className="text-neutral-100">MADE TO LAST.</span>
+          SHREE BALAJI BRICKS<br />
+          <span className="text-neutral-100 text-3xl sm:text-5xl md:text-6xl font-light block mt-2">Quality Bricks for Construction</span>
         </h1>
 
-        {/* Exact Supporting Text */}
-        <p className="text-lg sm:text-xl md:text-2xl text-neutral-200 font-light tracking-wide max-w-2xl mx-auto mb-10 drop-shadow">
-          Quality bricks for stronger foundations.
+        {/* Supporting Text naturally integrating keywords */}
+        <p className="text-base sm:text-lg md:text-xl text-neutral-200 font-light tracking-wide max-w-2xl mx-auto mb-10 drop-shadow">
+          Built on quality, made to last. As leading wholesale brick suppliers, Shree Balaji Bricks provides high-durability clay and masonry solutions for stronger foundations. For builders seeking dependable brick suppliers near me, we supply verified materials directly from our kilns and manufacturing yards.
         </p>
 
         {/* Action Buttons */}
