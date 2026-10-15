@@ -1,0 +1,6 @@
+{
+  "name": "Shree Balaji Bricks",
+  "description": "Premium brick manufacturing and wholesale supplier. High quality red clay bricks, fly ash bricks, concrete blocks, and paving bricks.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
