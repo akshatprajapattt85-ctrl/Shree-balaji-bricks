@@ -47,7 +47,7 @@ export function ProductsPage({ onNavigate, onRequestQuote }: ProductsPageProps) 
         </h1>
         {/* Opening paragraph with natural keyword placement */}
         <p className="text-base sm:text-lg text-neutral-300 font-light leading-relaxed">
-          Understanding the diverse <strong className="text-white font-normal">types of bricks</strong> used in modern construction is essential for structural stability, thermal insulation, and material budgeting. From traditional kiln-fired <strong className="text-white font-normal">red clay bricks</strong> to engineered <strong className="text-white font-normal">fly ash bricks</strong> and dense concrete blocks, each masonry option delivers specific benefits for residential, commercial, and boundary wall applications.
+          Understanding the diverse <strong className="text-white font-normal">types of bricks for construction</strong> is essential for structural stability, thermal insulation, and material budgeting. From traditional kiln-fired <strong className="text-white font-normal">red clay bricks</strong> to engineered <strong className="text-white font-normal">fly ash bricks</strong> and dense concrete blocks, each masonry option delivers specific benefits for residential, commercial, and boundary wall applications.
         </p>
       </div>
 

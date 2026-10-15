@@ -34,7 +34,7 @@ export function BuyingGuidePage({ onNavigate, onRequestQuote }: BuyingGuidePageP
         </h1>
         {/* Opening paragraph with natural keyword placement */}
         <p className="text-base sm:text-lg text-neutral-300 font-light leading-relaxed">
-          Understanding <strong className="text-white font-normal">how to choose quality bricks</strong> is one of the most critical decisions for homeowners, architects, and civil contractors. Selecting <strong className="text-white font-normal">good quality bricks</strong> ensures that structural load-bearing walls resist weather erosion, prevent moisture seepage, and provide lifelong stability. Whether planning a standalone residence or commercial project, evaluating <strong className="text-white font-normal">bricks for house construction</strong> requires knowledge of simple on-site physical tests and standard masonry guidelines.
+          Understanding <strong className="text-white font-normal">how to choose quality bricks</strong> is one of the most critical decisions for homeowners, architects, and civil contractors. Selecting <strong className="text-white font-normal">good quality bricks</strong> ensures that structural load-bearing walls resist weather erosion, prevent moisture seepage, and provide lifelong stability. When selecting the <strong className="text-white font-normal">best bricks for house construction</strong>, learning <strong className="text-white font-normal">how to identify good quality bricks</strong> through straightforward on-site physical tests protects your building investment.
         </p>
       </header>
 

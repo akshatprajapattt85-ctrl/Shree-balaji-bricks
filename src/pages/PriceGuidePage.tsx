@@ -34,7 +34,7 @@ export function PriceGuidePage({ onNavigate, onRequestQuote }: PriceGuidePagePro
         </h1>
         {/* Opening paragraph with natural keyword placement */}
         <p className="text-base sm:text-lg text-neutral-300 font-light leading-relaxed">
-          Estimating the overall <strong className="text-white font-normal">brick price</strong> is a vital step in construction budgeting for residential buildings, commercial complexes, and boundary walls. The total <strong className="text-white font-normal">cost of bricks</strong> depends on raw material quality, manufacturing kiln methods, regional transportation distances, and order quantity. Understanding how suppliers quote the <strong className="text-white font-normal">bricks per 1000 price</strong> helps project managers and homeowners plan material orders without unexpected expenses.
+          Estimating the overall <strong className="text-white font-normal">brick price</strong> is a vital step in construction budgeting for residential buildings, commercial complexes, and boundary walls. Calculating the <strong className="text-white font-normal">cost of bricks for house construction</strong> depends on raw material quality, manufacturing kiln methods, regional transportation distances, and order quantity. Understanding how suppliers quote the <strong className="text-white font-normal">bricks per 1000 price</strong> helps project managers and homeowners plan material orders without unexpected expenses.
         </p>
       </header>
 

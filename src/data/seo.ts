@@ -15,7 +15,7 @@ export const PAGES_SEO: Record<string, PageSEO> = {
   '/': {
     path: '/',
     title: 'Shree Balaji Bricks | Quality Bricks for Construction',
-    description: 'Explore Shree Balaji Bricks for quality construction bricks, product information, bulk supply enquiries and reliable brick solutions for building projects.',
+    description: 'Discover Shree Balaji Bricks for quality construction bricks, product information, bulk supply enquiries and reliable brick solutions for building projects.',
     mainKeyword: 'Shree Balaji Bricks',
     relatedKeywords: ['brick suppliers', 'quality bricks for construction'],
     canonical: `${BASE_PRODUCTION_URL}/`,
