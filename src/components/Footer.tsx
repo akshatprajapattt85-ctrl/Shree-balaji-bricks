@@ -12,8 +12,10 @@ export function Footer({ onNavigate }: FooterProps) {
 
   const navLinks = [
     { label: 'Home', path: '/' },
-    { label: 'Types of Bricks', path: '/types-of-bricks' },
-    { label: 'Brick Buying Guide', path: '/how-to-choose-quality-bricks' },
+    { label: 'About Us', path: '/#about' },
+    { label: 'Our Products', path: '/types-of-bricks' },
+    { label: 'Blog & Articles', path: '/blog' },
+    { label: 'How to Choose Bricks', path: '/how-to-choose-quality-bricks' },
     { label: 'Brick Price Guide', path: '/brick-price-guide' },
   ];
 

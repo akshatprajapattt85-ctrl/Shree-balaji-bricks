@@ -21,9 +21,10 @@ export function Navbar({ currentPath, onNavigate, onQuoteClick }: NavbarProps) {
 
   const navLinks = [
     { label: 'Home', path: '/' },
-    { label: 'Products', path: '/types-of-bricks' },
-    { label: 'Buying Guide', path: '/how-to-choose-quality-bricks' },
-    { label: 'Price Guide', path: '/brick-price-guide' },
+    { label: 'About Us', path: '/#about' },
+    { label: 'Our Products', path: '/types-of-bricks' },
+    { label: 'Blog & Articles', path: '/blog' },
+    { label: 'Contact Us', path: '/#contact' },
   ];
 
   const handleLinkClick = (path: string) => {
@@ -70,10 +71,18 @@ export function Navbar({ currentPath, onNavigate, onQuoteClick }: NavbarProps) {
           </span>
         </a>
 
-        {/* Zone 2: Clean 4–5 single-line navigation links */}
+        {/* Zone 2: Clean single-line navigation links */}
         <nav className="hidden md:flex items-center gap-7 text-xs lg:text-sm font-medium tracking-wide text-neutral-300">
           {navLinks.map((link) => {
-            const isActive = currentPath === link.path;
+            const isActive =
+              link.path === '/'
+                ? currentPath === '/'
+                : link.path === '/blog'
+                ? currentPath === '/blog' || currentPath.startsWith('/blog/')
+                : link.path === '/types-of-bricks'
+                ? currentPath === '/types-of-bricks'
+                : false;
+
             return (
               <a
                 key={link.label}
@@ -120,21 +129,32 @@ export function Navbar({ currentPath, onNavigate, onQuoteClick }: NavbarProps) {
       {mobileMenuOpen && (
         <div className="md:hidden bg-[#111113]/98 backdrop-blur-xl border-b border-neutral-800 px-6 py-6 transition-all">
           <nav className="flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.path}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleLinkClick(link.path);
-                }}
-                className={`text-sm font-medium transition-colors py-2 border-b border-neutral-800/50 ${
-                  currentPath === link.path ? 'text-[#DE5B3E]' : 'text-neutral-200 hover:text-[#B84226]'
-                }`}
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive =
+                link.path === '/'
+                  ? currentPath === '/'
+                  : link.path === '/blog'
+                  ? currentPath === '/blog' || currentPath.startsWith('/blog/')
+                  : link.path === '/types-of-bricks'
+                  ? currentPath === '/types-of-bricks'
+                  : false;
+
+              return (
+                <a
+                  key={link.label}
+                  href={link.path}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleLinkClick(link.path);
+                  }}
+                  className={`text-sm font-medium transition-colors py-2 border-b border-neutral-800/50 ${
+                    isActive ? 'text-[#DE5B3E]' : 'text-neutral-200 hover:text-[#B84226]'
+                  }`}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
             <div className="pt-2">
               <button
                 onClick={() => {

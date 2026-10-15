@@ -4,6 +4,11 @@ import { PAGES_SEO, BASE_PRODUCTION_URL } from '../src/data/seo';
 
 const distDir = path.resolve('dist');
 
+// Base template to copy for dynamic nested routes
+const baseTemplatePath = fs.existsSync(path.join(distDir, 'blog/index.html'))
+  ? path.join(distDir, 'blog/index.html')
+  : path.join(distDir, 'index.html');
+
 // Verification and enhancement of dist HTML files
 for (const [routePath, seo] of Object.entries(PAGES_SEO)) {
   const isHome = routePath === '/';
@@ -13,8 +18,16 @@ for (const [routePath, seo] of Object.entries(PAGES_SEO)) {
     : path.join(distDir, slug, 'index.html');
 
   if (!fs.existsSync(htmlFilePath)) {
-    console.error(`Warning: ${htmlFilePath} not found after build.`);
-    continue;
+    const dir = path.dirname(htmlFilePath);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    if (fs.existsSync(baseTemplatePath)) {
+      fs.copyFileSync(baseTemplatePath, htmlFilePath);
+    } else {
+      console.error(`Warning: ${htmlFilePath} not found and no base template available.`);
+      continue;
+    }
   }
 
   let html = fs.readFileSync(htmlFilePath, 'utf-8');
@@ -34,14 +47,31 @@ for (const [routePath, seo] of Object.entries(PAGES_SEO)) {
   const canonicalTag = `<link rel="canonical" href="${seo.canonical}" />`;
   html = html.replace('</head>', `  ${canonicalTag}\n  </head>`);
 
+  // Update OG Title and Description
+  html = html.replace(/<meta\s+property=["']og:title["'][^>]*>/gi, '');
+  html = html.replace('</head>', `  <meta property="og:title" content="${seo.title}" />\n  </head>`);
+  html = html.replace(/<meta\s+property=["']og:description["'][^>]*>/gi, '');
+  html = html.replace('</head>', `  <meta property="og:description" content="${seo.description}" />\n  </head>`);
+
+  // Update JSON-LD if schema present
+  if (seo.schema) {
+    const jsonLdTag = `<script type="application/ld+json" data-seo-jsonld="true">\n${JSON.stringify(
+      seo.schema,
+      null,
+      2
+    )}\n</script>`;
+    const existingJsonLd = /<script\s+type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi;
+    html = html.replace(existingJsonLd, '');
+    html = html.replace('</head>', `  ${jsonLdTag}\n  </head>`);
+  }
+
   fs.writeFileSync(htmlFilePath, html, 'utf-8');
   console.log(`Verified & finalized: ${routePath} -> ${htmlFilePath}`);
 
   // Also write flat clean-url HTML file for static hosts (e.g. dist/types-of-bricks.html)
-  if (!isHome) {
+  if (!isHome && !slug.includes('/')) {
     const flatFile = path.join(distDir, `${slug}.html`);
     fs.writeFileSync(flatFile, html, 'utf-8');
-    console.log(`Created flat alias: ${flatFile}`);
   }
 }
 

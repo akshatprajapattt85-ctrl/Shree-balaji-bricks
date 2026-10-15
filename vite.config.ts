@@ -34,6 +34,7 @@ export default defineConfig(() => {
           typesOfBricks: path.resolve(import.meta.dirname || '.', 'types-of-bricks/index.html'),
           howToChoose: path.resolve(import.meta.dirname || '.', 'how-to-choose-quality-bricks/index.html'),
           brickPriceGuide: path.resolve(import.meta.dirname || '.', 'brick-price-guide/index.html'),
+          blog: path.resolve(import.meta.dirname || '.', 'blog/index.html'),
         },
       },
     },

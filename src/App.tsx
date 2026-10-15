@@ -13,12 +13,16 @@ import { About } from './components/About';
 import { VisualBanner } from './components/VisualBanner';
 import { WhyChooseUs } from './components/WhyChooseUs';
 import { Gallery } from './components/Gallery';
+import { LatestArticles } from './components/LatestArticles';
 import { HomeFAQ } from './components/HomeFAQ';
 import { QuoteSection } from './components/QuoteSection';
 import { Footer } from './components/Footer';
 import { ProductsPage } from './pages/ProductsPage';
 import { BuyingGuidePage } from './pages/BuyingGuidePage';
 import { PriceGuidePage } from './pages/PriceGuidePage';
+import { BlogListingPage } from './pages/BlogListingPage';
+import { BlogPostPage } from './pages/BlogPostPage';
+import { BLOG_POSTS } from './data/blogPosts';
 import { usePageSEO, normalizePath } from './utils/seoManager';
 
 export default function App() {
@@ -88,6 +92,10 @@ export default function App() {
     scrollToSection('quote');
   };
 
+  // Helper to test if path is a blog post
+  const cleanSlug = currentPath.replace(/^\/blog\//, '').replace(/^\//, '');
+  const isPostSlug = BLOG_POSTS.some((p) => p.slug === cleanSlug);
+
   return (
     <div className="min-h-screen bg-[#0D0D0E] text-[#E6E4E2] flex flex-col selection:bg-[#B84226] selection:text-white">
       {/* Navigation */}
@@ -121,10 +129,13 @@ export default function App() {
             {/* 6. Image Gallery */}
             <Gallery />
 
-            {/* 7. Homepage AEO Question-and-Answer Section */}
+            {/* 7. Homepage Latest Articles from Blog */}
+            <LatestArticles onNavigate={handleNavigate} />
+
+            {/* 8. Homepage AEO Question-and-Answer Section */}
             <HomeFAQ onNavigate={handleNavigate} />
 
-            {/* 8. Get a Quote Section */}
+            {/* 9. Get a Quote Section */}
             <QuoteSection preselectedProduct={quoteProductPreset} />
           </>
         )}
@@ -133,6 +144,13 @@ export default function App() {
           <ProductsPage
             onNavigate={handleNavigate}
             onRequestQuote={handleRequestQuoteFromProduct}
+          />
+        )}
+
+        {currentPath === '/blog' && (
+          <BlogListingPage
+            onNavigate={handleNavigate}
+            onRequestQuote={() => scrollToSection('quote')}
           />
         )}
 
@@ -147,6 +165,19 @@ export default function App() {
           <PriceGuidePage
             onNavigate={handleNavigate}
             onRequestQuote={() => scrollToSection('quote')}
+          />
+        )}
+
+        {/* Dynamic Blog Post view for /blog/:slug and any matching post slug */}
+        {(currentPath.startsWith('/blog/') ||
+          (isPostSlug &&
+            currentPath !== '/how-to-choose-quality-bricks' &&
+            currentPath !== '/brick-price-guide' &&
+            currentPath !== '/types-of-bricks')) && (
+          <BlogPostPage
+            slug={currentPath}
+            onNavigate={handleNavigate}
+            onRequestQuote={handleRequestQuoteFromProduct}
           />
         )}
       </main>
