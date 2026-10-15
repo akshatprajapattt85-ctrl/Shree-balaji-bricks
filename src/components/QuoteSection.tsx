@@ -73,7 +73,7 @@ export function QuoteSection({ preselectedProduct }: QuoteSectionProps) {
     if (!validate()) return;
 
     // Generate reference code
-    const refCode = `SBB-${Math.floor(100000 + Math.random() * 900000)}`;
+    const refCode = `PSE-${Math.floor(100000 + Math.random() * 900000)}`;
     setSubmittedReceipt({
       referenceId: refCode,
       data: { ...formData },
@@ -82,7 +82,7 @@ export function QuoteSection({ preselectedProduct }: QuoteSectionProps) {
 
   const getWhatsAppUrl = (data: QuoteFormData, refId?: string) => {
     const text = encodeURIComponent(
-      `Hello Shree Balaji Bricks,\n\nI would like to request a quotation for my project:\n` +
+      `Hello Pawanshakti Enterprises,\n\nI would like to request a quotation for my project:\n` +
       (refId ? `*Reference:* ${refId}\n` : '') +
       `*Name:* ${data.fullName || 'Prospective Customer'}\n` +
       `*Product:* ${data.productType}\n` +
@@ -129,7 +129,7 @@ export function QuoteSection({ preselectedProduct }: QuoteSectionProps) {
             <div className="relative rounded-sm overflow-hidden border border-neutral-800 shadow-xl aspect-[16/11] bg-neutral-900 mb-8">
               <ImageWithFallback
                 src={ASSETS.kiln}
-                alt="Shree Balaji Bricks Kiln Production"
+                alt="Pawanshakti Enterprises Kiln Production"
                 fallbackTitle="Manufacturing Kiln"
                 className="w-full h-full object-cover"
               />

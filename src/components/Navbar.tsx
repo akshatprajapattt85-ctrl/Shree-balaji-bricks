@@ -68,7 +68,7 @@ export function Navbar({ onQuoteClick }: NavbarProps) {
             </div>
           </div>
           <span className="text-base sm:text-lg font-bold tracking-wider text-white uppercase font-display">
-            SHREE BALAJI BRICKS
+            PAWANSHAKTI ENTERPRISES
           </span>
         </a>
 

@@ -44,7 +44,7 @@ export function About() {
           {/* Column 2: Minimalist Text Content & 3 Compact Highlights */}
           <div className="flex flex-col justify-center">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#B84226] block mb-3">
-              About Shree Balaji Bricks
+              About Pawanshakti Enterprises
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight text-white font-display mb-5 leading-tight">
               STRENGTH IN EVERY BRICK.

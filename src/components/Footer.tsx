@@ -37,7 +37,7 @@ export function Footer() {
                 </div>
               </div>
               <span className="text-lg font-bold tracking-wider text-white uppercase font-display">
-                SHREE BALAJI BRICKS
+                PAWANSHAKTI ENTERPRISES
               </span>
             </div>
 
@@ -47,7 +47,7 @@ export function Footer() {
 
             <div className="pt-2">
               <a
-                href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=Hello%20Shree%20Balaji%20Bricks,%20I%20would%20like%20to%20inquire%20about%20brick%20pricing%20and%20orders.`}
+                href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=Hello%20Pawanshakti%20Enterprises,%20I%20would%20like%20to%20inquire%20about%20brick%20pricing%20and%20orders.`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 hover:border-emerald-700/60 text-neutral-300 hover:text-white rounded-sm transition-colors"

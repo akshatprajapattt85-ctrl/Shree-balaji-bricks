@@ -127,12 +127,12 @@ export const GALLERY_ITEMS: GalleryItem[] = [
 ];
 
 export const BUSINESS_INFO = {
-  name: 'SHREE BALAJI BRICKS',
+  name: 'PAWANSHAKTI ENTERPRISES',
   tagline: 'Built on Quality. Made to Last.',
   description: 'Supplying premium kiln-fired clay bricks, fly ash bricks, concrete blocks, and paving solutions for residential, commercial, and infrastructure builds.',
   phonePlaceholder: '+91 98765 43210',
   whatsappNumber: '919876543210',
-  emailPlaceholder: 'inquiries@shreebalajibricks.com',
+  emailPlaceholder: 'inquiries@pawanshaktienterprises.com',
   addressPlaceholder: 'Industrial Estate, Brick Manufacturing Zone, India',
   dispatchHours: 'Mon - Sat: 7:00 AM - 7:00 PM',
 };
